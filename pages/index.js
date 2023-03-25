@@ -3,13 +3,15 @@ import Populer from '../components/populer';
 
 export default function Index({movies}) {
   return (
-    <>
+    <> <div className='bg-orange-100'>
+
       <Head>
         <title >Anasayfa</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Populer movies={movies}/>
       
+    </div>
     </>
 
   )
@@ -23,4 +25,5 @@ export async function getServerSideProps() {
     }
   }
 }
+
 

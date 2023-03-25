@@ -49,23 +49,14 @@ export default function Header() {
                         <li data-te-nav-item-ref>
                             <Link href="/favorite"
                                 className="block transition duration-150 ease-in-out hover:text-orange-400 focus:text-orange-400 disabled:text-black/30 dark:hover:orange-400 dark:focus:orange-400 sm:p-2 [&.active]:text-black/90"
-                            >Favori</Link>
+                            >Favorilerim</Link>
                         </li>
                         <li data-te-nav-item-ref>
-                            <Link href="/about"
+                            <Link href="/history"
                                 className="block transition duration-150 ease-in-out hover:text-orange-400 focus:text-orange-400 disabled:text-black/30 dark:hover:orange-400 dark:focus:orange-400 sm:p-2 [&.active]:text-black/90"
-                            >Tür</Link>
+                            >İzlediklerim</Link>
                         </li>
-                        <li data-te-nav-item-ref>
-                            <Link href="/about"
-                                className="block transition duration-150 ease-in-out hover:text-orange-400 focus:text-orange-400 disabled:text-black/30 dark:hover:orange-400 dark:focus:orange-400 sm:p-2 [&.active]:text-black/90"
-                            >Yıl</Link>
-                        </li>
-                        <li data-te-nav-item-ref>
-                            <Link href="/about"
-                                className="block transition duration-150 ease-in-out hover:text-orange-400 focus:text-orange-400 disabled:text-black/30 dark:hover:orange-400 dark:focus:orange-400 sm:p-2 [&.active]:text-black/90"
-                            >İmdb</Link>
-                        </li>
+                       
                     </ul>
                     <div className="relative flex h-10 w-full min-w-[200px] max-w-[24rem]">
                         <input
