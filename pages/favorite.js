@@ -5,7 +5,8 @@ import Link from "next/link";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 
 // favori filmleri göstermek için component
@@ -29,26 +30,7 @@ export default function Favorite() {
   }
 
   return (
-    // <div>
-    //     <Head>
-    //         <title>Favori filmlerim</title>
-    //     </Head>
-    //   <h1>Favori Filmler</h1>
-    //   {favorites.length === 0 && (
-    //     <p>Henüz favori film yok</p>
-    //   )}
-    //   {favorites.length > 0 && (
-    //     <ul>
-    //       {favorites.map((movie,index) => (
-    //         <li key={index}>
-    //           <h3>{movie.id}</h3>
-    //           <button onClick={() => handleRemoveFromFavorites(movie)}>Favorilerden Kaldır</button>
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   )}
-    // </div>
-    <div className="bg-orange-100 min-h-[calc(100vh_-_56px)] max-w-[1200px] p-5 mx-auto"
+    <div className="pt-[56px] min-h-screen max-w-[1200px] p-5 mx-auto"
     >
         <Head>
             <title>Favori filmlerim</title>
@@ -65,21 +47,17 @@ export default function Favorite() {
                             <img className=" w-full" src={`https://www.themoviedb.org/t/p/w220_and_h330_face${fav.poster_path}`} alt="poster" />
                         </Link>
                         <h3 className="text-base absolute bottom-0 left-0 w-full text-white pt-[50px] pb-[10px] px-[20px]
-                 bg-gradient-to-t from-black to-transparent">{fav.title}</h3>
-
-                        <button onClick={() => handleRemoveFromFavorites(fav)} className="z-10 absolute top-0  w-16 pt-[10px] pb-[30px] px-[20px]
-                        bg-gradient-to-b from-orange-500 to-transparent">
+                                      bg-gradient-to-t from-black to-transparent">{fav.title}</h3>
+                        <button onClick={() => handleRemoveFromFavorites(fav)} data-tooltip-id="my-tooltip" data-tooltip-content="Favorilerden Kaldır"
+                        className="z-10 absolute top-0  w-16 pt-[10px] pb-[30px] px-[20px]
+                                      bg-gradient-to-b from-orange-500 to-transparent">
                             <FontAwesomeIcon icon={faStar} className={
                                 favorites.some((h) => h.id === fav.id)
                                     ? "text-yellow-400"
                                     : "text-white"
                             } />
                         </button>
-
-                        {/* <button onClick={() => handleRemoveFromFavorites(fav)} className="z-10 absolute top-0 right-0 w-16 pt-[10px] pb-[30px] px-[20px]
-                 bg-gradient-to-b from-orange-500 to-transparent">
-                            <FontAwesomeIcon icon={faClockRotateLeft} />
-                        </button> */}
+                        <Tooltip id="my-tooltip" />
                     </div>
                 ))}
             </div>

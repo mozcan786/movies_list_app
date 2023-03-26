@@ -2,7 +2,7 @@
 import Head from "next/head";
 export default function FilmDetay({ movie }) {
     console.log(movie);
-    return <div className="max-w-[1200px] w-full my-0 mx-auto">
+    return <div className="pt-[56px] min-h-screen max-w-[1200px] w-full my-0 mx-auto">
         <Head>
             <title>{movie.title}</title>
         </Head>

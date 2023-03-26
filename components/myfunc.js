@@ -81,3 +81,6 @@ export function removeFromHistories(history) {
     // izlenen filmleri yerel depolama alanına kaydet
     localStorage.setItem('histories', JSON.stringify(histories));
 }
+
+
+  

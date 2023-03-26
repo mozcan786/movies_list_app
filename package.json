@@ -8,9 +8,14 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.3.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "axios": "^1.3.4",
     "next": "latest",
+    "query-string": "^8.1.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-toastify": "^9.1.2",
+    "react-tooltip": "^5.10.1",
+    "window": "^4.2.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

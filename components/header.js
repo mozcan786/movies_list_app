@@ -1,22 +1,44 @@
-import Link from "next/link";
+import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 export default function Header() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const router = useRouter();
+
+    const [isActive, setIsActive] = useState(false);
+    function handleClick() {
+        setIsActive(!isActive);
+    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch()
+
+        }
+    }
+    const handleSearch = (event) => {
+        // event.preventDefault();
+        router.push(`/?query=${searchTerm}`);
+    }
+
+    const handleInputChange = (event) => {
+        console.log(event.target.value);
+        setSearchTerm(event.target.value);
+    }
     return <header >
         <nav
-            className=" relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg 
-             focus:text-orange-400 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start"
+            className="  flex w-full sm:items-center justify-start bg-white py-2 text-neutral-600 shadow-lg 
+             focus:text-orange-400 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-between fixed z-20"
             data-te-navbar-ref>
 
-            <div className="max-w-[1200px]  mx-auto flex w-full flex-nowrap items-center justify-between px-6">
-                <div className="flex items-center">
-                    <button
+            <div className="max-w-[1200px]  mx-auto flex flex-col sm:flex-row w-full flex-nowrap sm:items-center justify-between px-6 ">
+                <div className="flex sm:items-center">
+                    <button onClick={handleClick}
                         className="mr-2 border-0 bg-transparent py-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-orange-400 focus:text-orange-400 dark:hover:orange-400 dark:focus:orange-400 sm:hidden"
                         type="button"
-                        data-te-collapse-init
-                        data-te-target="#navbarSupportedContentY"
-                        aria-controls="navbarSupportedContentY"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
+                        >
                         <span className="[&>svg]:w-5">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -33,13 +55,13 @@ export default function Header() {
                         </span>
                     </button>
                 </div>
-                <div
-                    className="!visible hidden grow basis-[100%] items-center sm:!flex sm:basis-auto"
+                <div 
+                    className={`sm:basis-[100%] items-center sm:!flex basis-auto sm:my-0 my-5 ${isActive ? "visible" : "hidden"}`}
                     id="navbarSupportedContentY"
                     data-te-collapse-item>
-                    <img src="/yasko-logo.png"></img>
+                    <img src="/yasko-logo.png" className='h-56px'></img>
                     <ul
-                        className="mx-auto flex flex-col sm:flex-row"
+                        className="mx-auto flex flex-col sm:flex-row py-3 sm:py-0"
                         data-te-navbar-nav-ref>
                         <li data-te-nav-item-ref>
                             <Link href="/"
@@ -56,25 +78,34 @@ export default function Header() {
                                 className="block transition duration-150 ease-in-out hover:text-orange-400 focus:text-orange-400 disabled:text-black/30 dark:hover:orange-400 dark:focus:orange-400 sm:p-2 [&.active]:text-black/90"
                             >İzlediklerim</Link>
                         </li>
-                       
+
                     </ul>
-                    <div className="relative flex h-10 w-full min-w-[200px] max-w-[24rem]">
+                    <div className="relative flex h-10 w-full  max-w-[24rem]">
+
                         <input
                             type="text"
-                            className="peer h-full w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-orange-400 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-                            placeholder=" "
+                            placeholder='Film ara...'
+                            value={searchTerm}
+                            onChange={handleInputChange} onKeyDown={handleKeyDown}
+                            className="peer h-full w-full rounded-[7px] border border-blue-gray-200  bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal 
+                                text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 
+                                placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-orange-400 focus:border-t-transparent focus:outline-0 disabled:border-0 
+                                disabled:bg-blue-gray-50"
+
                             required
                         />
                         <button
-                            className="!absolute right-1 top-1 z-10 select-none rounded bg-orange-400 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase orange-400 shadow-md shadow-orange-400/20 transition-all hover:shadow-lg hover:shadow-orange-400/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
-                            type="button"
+                            onClick={() => handleSearch()}
+                            className="!absolute right-1 top-1 z-10 select-none rounded bg-orange-400 py-2 px-4 text-center align-middle font-sans text-xs 
+                                font-bold uppercase orange-400 shadow-md shadow-orange-400/20 transition-all hover:shadow-lg hover:shadow-orange-400/40 focus:opacity-[0.85] 
+                                focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 
+                                peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+                            type="submit"
                             data-ripple-light="true"
                         >
                             Ara
                         </button>
-                        <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-orange-400 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-orange-400 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-orange-400 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-                            Film Ara
-                        </label>
+
                     </div>
                 </div>
 
