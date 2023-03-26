@@ -13,7 +13,6 @@ export default function Favorite() {
     useEffect(() => {
         // yerel depolama alanındaki izlenen filmleri al
         let storedHistories = JSON.parse(localStorage.getItem('histories'));
-        console.log(storedHistories);
         if (!storedHistories) {
             storedHistories = [];
         }

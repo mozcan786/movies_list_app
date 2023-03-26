@@ -14,7 +14,6 @@ export function addToFavorites(movie) {
 
     // favori filmleri yerel depolama alanına kaydet
     localStorage.setItem('favorites', JSON.stringify(favorites));
-    console.log(favorites.some((fav) => fav.id === movie.id));
 }
 
 // favori filmleri yerel depolama alanından kaldırmak için fonksiyon
@@ -52,7 +51,6 @@ export function addToHistory(history) {
 
     // izlenen filmleri yerel depolama alanına kaydet
     localStorage.setItem('histories', JSON.stringify(histories));
-    console.log(histories.some((fav) => fav.id === history.id));
 }
 
 // izlenen filmleri yerel depolama alanından kaldırmak için fonksiyon

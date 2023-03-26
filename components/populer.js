@@ -11,7 +11,6 @@ export default function Populer({ movies }) {
     const router = useRouter();
     const { query } = router.query
     const [favorites] = useState([]);
-    console.log(favorites);
     return <div className="pt-[56px] min-h-screen max-w-[1200px] p-5 mx-auto">
         <h2 className="text-4xl mb-5">Popüler Filmler</h2>
         <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">

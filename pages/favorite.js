@@ -14,7 +14,6 @@ export default function Favorite() {
   // yerel depolama alanındaki favori filmleri al
   useEffect(() => {
     let storedFavorites = JSON.parse(localStorage.getItem('favorites'));
-    console.log(storedFavorites);
     if (!storedFavorites) {
       storedFavorites = [];
     }
