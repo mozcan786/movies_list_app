@@ -1,7 +1,7 @@
 import Head from "next/head";
+import Link from "next/link";
 import { removeFromHistories } from '../components/myfunc';
 import { useState, useEffect } from 'react';
-import Link from "next/link";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
 import { Tooltip } from 'react-tooltip'

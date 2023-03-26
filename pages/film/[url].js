@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 export default function FilmDetay({ movie }) {
     console.log(movie);
@@ -14,7 +13,7 @@ export default function FilmDetay({ movie }) {
                             <h1 className="font-bold text-lg uppercase">{movie.title}</h1>
                             <div className="w-10 h-1 bg-white"></div>
                             <ul className="space-y-2 mt-2 sm:mb-8">
-                                
+
                                 <li>
                                     <span className="text-xs text-gray-700">Tür</span>
                                     {movie.genres.map((gen, index) => (
@@ -47,7 +46,7 @@ export default function FilmDetay({ movie }) {
                                     className="absolute w-10 h-12 -mt-3 -ml-3 bg-gray-200 z-0 hidden sm:block"
                                 ></div>
                                 <img
-                                     src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
+                                    src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
                                     alt="poster"
                                     className="relative z-10 w-1/2 h-auto block ml-auto mr-auto sm:ml-0 sm:mr-0 sm:w-full sm:h-64 object-cover"
                                 />
@@ -63,7 +62,7 @@ export default function FilmDetay({ movie }) {
                                     >
                                         Özet
                                     </li>
-                                    
+
                                 </ul>
                                 <div className="flex flex-wrap sm:divide-x divide-gray-400 pl-2 pr-2 sm:pl-8 sm:pr-8">
                                     <p>{movie.overview}</p>
@@ -74,10 +73,9 @@ export default function FilmDetay({ movie }) {
                 </div>
             </div>
         </div>
-
     </div>
 }
-
+// Film detayı için çekilen api
 export async function getServerSideProps({ params }) {
     const request = await fetch(`https://api.themoviedb.org/3/movie/${params.url}?api_key=bfb5af5be609f3f8e791c601eca04dc0&language=tr-TR`)
     const movie = await request.json()

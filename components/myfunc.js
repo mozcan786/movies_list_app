@@ -1,11 +1,8 @@
-
-
 // favori filmleri yerel depolama alanında saklamak için fonksiyon
 export function addToFavorites(movie) {
+
     // yerel depolama alanındaki favori filmleri al
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
-  
 
     // aynı filmi eklemeyi engelle
     if (favorites.find(favorite => favorite.id === movie.id)) {
@@ -14,7 +11,6 @@ export function addToFavorites(movie) {
 
     // yeni favori filmi ekle
     favorites.push(movie);
-
 
     // favori filmleri yerel depolama alanına kaydet
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -46,8 +42,6 @@ export function addToHistory(history) {
     // yerel depolama alanındaki izlenen filmleri al
     let histories = JSON.parse(localStorage.getItem('histories')) || [];
 
-  
-
     // aynı filmi eklemeyi engelle
     if (histories.find(favorite => favorite.id === history.id)) {
         return;
@@ -55,7 +49,6 @@ export function addToHistory(history) {
 
     // yeni izlenen filmi ekle
     histories.push(history);
-
 
     // izlenen filmleri yerel depolama alanına kaydet
     localStorage.setItem('histories', JSON.stringify(histories));
