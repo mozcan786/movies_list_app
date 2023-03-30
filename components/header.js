@@ -34,10 +34,10 @@ export default function Header() {
 
             <div className="max-w-[1200px]  mx-auto flex flex-col sm:flex-row w-full flex-nowrap sm:items-center justify-between px-6 ">
                 <div className="flex sm:items-center">
-                    <button onClick={handleClick}
+                    <button onClick={handleClick} aria-label="menü"
                         className="mr-2 border-0 bg-transparent py-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-orange-400 focus:text-orange-400 dark:hover:orange-400 dark:focus:orange-400 sm:hidden"
                         type="button"
-                        >
+                    >
                         <span className="[&>svg]:w-5">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -54,11 +54,11 @@ export default function Header() {
                         </span>
                     </button>
                 </div>
-                <div 
+                <div
                     className={`sm:basis-[100%] items-center sm:!flex basis-auto sm:my-0 my-5 ${isActive ? "visible" : "hidden"}`}
                     id="navbarSupportedContentY"
                     data-te-collapse-item>
-                    <img src="/yasko-logo.png" className='h-56px'></img>
+                    <h2 className='uppercase'>Logo</h2>
                     <ul
                         className="mx-auto flex flex-col sm:flex-row py-3 sm:py-0"
                         data-te-navbar-nav-ref>
@@ -95,12 +95,13 @@ export default function Header() {
                         />
                         <button
                             onClick={() => handleSearch()}
-                            className="!absolute right-1 top-1 z-10 select-none rounded bg-orange-400 py-2 px-4 text-center align-middle font-sans text-xs 
-                                font-bold uppercase orange-400 shadow-md shadow-orange-400/20 transition-all hover:shadow-lg hover:shadow-orange-400/40 focus:opacity-[0.85] 
+                            className="!absolute right-1 top-1 z-10 select-none rounded bg-orange-800 py-2 px-4 text-center align-middle font-sans text-xs 
+                                font-bold uppercase orange-800 shadow-md shadow-orange-800/20 transition-all hover:shadow-lg hover:shadow-orange-800/40 focus:opacity-[0.85] 
                                 focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-blue-gray-500 
                                 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
                             type="submit"
                             data-ripple-light="true"
+                            aria-label="Ara"
                         >
                             Ara
                         </button>

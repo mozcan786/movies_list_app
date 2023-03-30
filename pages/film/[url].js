@@ -3,6 +3,14 @@ export default function FilmDetay({ movie }) {
     return <div className="pt-[56px] min-h-screen max-w-[1200px] w-full my-0 mx-auto">
         <Head>
             <title>{movie.title}</title>
+            <meta name="description" content="A description of my page" />
+            <link rel="icon" href="/favicon.ico" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta http-equiv="Content-Language" content="en" />
+            <meta name="keywords" content="my, page, keywords" />
+            <meta name="author" content="My Name" />
+            <meta name="robots" content="index, follow" />
+            <meta http-equiv="Content-Language" content="en" />
         </Head>
         <div className="flex items-center justify-center" >
             <div className="container flex justify-center">
