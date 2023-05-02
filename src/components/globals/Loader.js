@@ -1,5 +1,5 @@
 export default function Loader() {
-    return <div className="flex justify-center min-h-screen bg-orange-100 pt-[100px]">
+    return <div className="flex justify-center min-h-screen pt-[100px]">
         <div className="flex flex-col">
             <div className='flex space-x-24'>
                 <div className='container space-y-10 relative'>

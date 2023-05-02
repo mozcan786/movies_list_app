@@ -42,7 +42,12 @@ export default function FilmDetay({ movie }) {
                             </ul>
                         </div>
                         <div className="w-full sm:w-9/12 h-64 sm:h-auto bg-indigo-900 bg-cover relative flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-white z-10 relative cursor-pointer transition duration-500 transform hover:scale-110"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"
+                                className="text-white z-1 relative cursor-pointer transition duration-500 transform hover:scale-110">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                            </svg>
                             <div className="opacity-75 bg-black w-full h-full left-0 top-0 absolute"></div>
                         </div>
                     </div>
@@ -55,7 +60,7 @@ export default function FilmDetay({ movie }) {
                                 <img
                                     src={`https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}`}
                                     alt="poster"
-                                    className="relative z-10 w-1/2 h-auto block ml-auto mr-auto sm:ml-0 sm:mr-0 sm:w-full sm:h-64 object-cover"
+                                    className="relative  w-1/2 h-auto block ml-auto mr-auto sm:ml-0 sm:mr-0 sm:w-full sm:h-64 object-cover"
                                 />
                             </figure>
                         </div>

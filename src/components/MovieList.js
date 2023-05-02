@@ -2,19 +2,21 @@ import Link from "next/link"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
-import { addToFavorites, addToHistory } from '../utils/myfunc';
+import { addToFavorites, addToHistory } from '@/utils/myfunc';
 import { useState } from 'react';
 import { useRouter } from "next/router";
 import { Tooltip } from 'react-tooltip'
 import 'react-tooltip/dist/react-tooltip.css'
-export default function Populer({ data }) {
+
+
+export default function MovieList({ data }) {
     let sortedData = data ? [...data.results] : [];
-    console.log(sortedData);
     const router = useRouter();
     const { query } = router.query
     const [favorites] = useState([]);
+    
     return <div className="pt-[56px] min-h-screen max-w-[1200px] p-5 mx-auto">
-        <h2 className="text-4xl mb-5">Popüler Filmler</h2>
+        <h2 className="text-4xl mb-5 dark:text-light">Popüler Filmler</h2>
         <div className=" grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-8">
             {sortedData.filter(item => {
                 if (query === undefined) {
@@ -31,7 +33,7 @@ export default function Populer({ data }) {
                     <h3 className="text-base absolute bottom-0 left-0 w-full text-white pt-[50px] pb-[10px] px-[20px]
                      bg-gradient-to-t from-black to-transparent">{movie.title}</h3>
                     <button aria-label="ekle" onClick={() => addToFavorites(movie)} data-tooltip-id="my-tooltip" data-tooltip-content="Favorilere Ekle"
-                        className="z-10 absolute top-0  w-14 pt-[10px] pb-[30px] px-[20px]
+                        className="z-1 absolute top-0  w-14 pt-[10px] pb-[30px] px-[20px]
                             bg-gradient-to-b from-orange-500 to-transparent">
                         <FontAwesomeIcon icon={faStar} className={
                             favorites.some((fav) => fav.id === movie.id)
@@ -40,7 +42,7 @@ export default function Populer({ data }) {
                         } />
                     </button>
                     <button aria-label="ekle" onClick={() => addToHistory(movie)} data-tooltip-id="my-tooltip" data-tooltip-content="İzlenenlere Ekle"
-                        className="z-10 absolute top-0 right-0 w-14 pt-[10px] pb-[30px] px-[20px]
+                        className="z-1 absolute top-0 right-0 w-14 pt-[10px] pb-[30px] px-[20px]
                      bg-gradient-to-b from-orange-500 to-transparent">
                         <FontAwesomeIcon icon={faClockRotateLeft} className={favorites.some((h) => h.id === movie.id)
                             ? "text-black"
