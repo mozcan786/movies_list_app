@@ -36,3 +36,27 @@ button {
   padding: 0.5rem 1rem;
   font-weight: bold;
 }
+
+.slick-prev:before,
+.slick-next:before {
+  font-size: 50px !important;
+  color: black !important;
+
+}
+
+.slick-prev {
+  color: black !important;
+  left: 10PX !important;
+  z-index: 100 !important;
+}
+
+.slick-next {
+  color: black !important;
+  right: 40px !important;
+  z-index: 100 !important;
+}
+
+.slick-slide {
+  padding-left: 0.5rem!important;
+  padding-right: 0.5rem!important;
+}

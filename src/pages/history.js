@@ -27,7 +27,7 @@ export default function Favorite() {
     }
 
     return (
-        <div className="pt-[56px] min-h-screen max-w-[1200px] p-5 mx-auto"
+        <div className="pt-[56px] min-h-screen  p-5 mx-auto"
         >
             <Head>
                 <title>izlenen filmlerim</title>
@@ -47,7 +47,7 @@ export default function Favorite() {
                             <h3 className="text-base absolute bottom-0 left-0 w-full text-white pt-[50px] pb-[10px] px-[20px] bg-gradient-to-t from-black to-transparent">
                                 {history.title}</h3>
                             <button onClick={() => handleRemoveFromHistories(history)} data-tooltip-id="my-tooltip" data-tooltip-content="İzlenenlerden Kaldır" aria-label="kaldır"
-                                className="z-1 absolute top-0 right-0 w-16 pt-[10px] pb-[30px] px-[20px] bg-gradient-to-b from-orange-500 to-transparent">
+                                className="z-1 absolute top-0 right-0 w-16 pt-[10px] pb-[30px] px-[20px] bg-gradient-to-b from-black to-transparent">
                                 <FontAwesomeIcon icon={faClockRotateLeft} className={histories.some((h) => h.id === history.id)
                                     ? "text-black"
                                     : "text-white"

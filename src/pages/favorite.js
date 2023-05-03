@@ -28,7 +28,7 @@ export default function Favorite() {
   }
 
   return (
-    <div className="pt-[56px] min-h-screen max-w-[1200px] p-5 mx-auto"
+    <div className="pt-[56px] min-h-screen  p-5 mx-auto"
     >
       <Head>
         <title>Favori filmlerim</title>
@@ -50,7 +50,7 @@ export default function Favorite() {
                                       bg-gradient-to-t from-black to-transparent">{fav.title}</h3>
               <button onClick={() => handleRemoveFromFavorites(fav)} data-tooltip-id="my-tooltip" data-tooltip-content="Favorilerden Kaldır" aria-label="kaldır"
                 className="z-1 absolute top-0  w-16 pt-[10px] pb-[30px] px-[20px]
-                                      bg-gradient-to-b from-orange-500 to-transparent">
+                                      bg-gradient-to-b from-black to-transparent">
                 <FontAwesomeIcon icon={faStar} className={
                   favorites.some((h) => h.id === fav.id)
                     ? "text-yellow-400"
