@@ -2,42 +2,45 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchApiData } from '@/store/apiSlice';
 import MovieList from '@/components/MovieList';
 import Error from '@/components/globals/Error';
 import Loader from '@/components/globals/Loader';
 import Carousel from '@/components/Carousel';
 
+import { fetchAPIThunk, selectAPIData, selectLoading, selectError } from '@/store/contentSlice';
+import { API_ENDPOINT_1, API_ENDPOINT_2 } from '@/store/constants';
+
+
 export default function Index() {
   const name = 'Populer Movies'
+  const name1 = 'Now Playing Movies'
   const dispatch = useDispatch();
-  const apiData = useSelector((state) => state.api.data);
-  const apiStatus = useSelector((state) => state.api.status);
-  const apiError = useSelector((state) => state.api.error);
-  console.log(apiData);
+  const apiData = useSelector(selectAPIData);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
   useEffect(() => {
-    dispatch(fetchApiData('getUsers'));
+    dispatch(fetchAPIThunk({ apiEndpoint: API_ENDPOINT_1 }));
+    dispatch(fetchAPIThunk({ apiEndpoint: API_ENDPOINT_2 }));
   }, [dispatch]);
-  if (apiStatus === 'loading') {
-    return <Loader />
-  }
-  console.log(apiError);
-  if (apiStatus === 'failled') {
-    return <Error />
-  }
+
   return (
     <>
       <div className=''>
-        <Head>
-          <title >Anasayfa</title>
-          <meta name="description" content="A description of my page" />
-        </Head>
-        <Carousel data={apiData} />
-        <MovieList data={apiData} name={name} />
-
+        {loading && <Loader/>}
+        {error && <Error message={error} />}
+        {!loading && !error && (
+          <>
+            <Head>
+              <title>Anasayfa</title>
+              <meta name="description" content="A description of my page" />
+            </Head>
+            {apiData && apiData.api1 && <Carousel data={apiData.api1}  />}
+            {apiData && apiData.api1 && <MovieList data={apiData.api1} name={name} />}
+            {apiData && apiData.api2 && <MovieList data={apiData.api2} name={name1} />}
+          </>
+        )}
       </div>
     </>
   )
 }
-
-

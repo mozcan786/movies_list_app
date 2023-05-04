@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Logo from './Logo'
 import { useRouter } from 'next/router'
 import { SunIcon, MoonIcon } from './globals/Icon'
@@ -7,28 +7,45 @@ import useThemeSwitcher from './hooks/useThemeSwitcher'
 
 const CustomLink = ({ href, title, className = "" }) => {
     const router = useRouter()
+    const [width, setWidth] = useState('w-0')
+    
+    useEffect(() => {
+        if (router.asPath === href) {
+            setWidth('w-full')
+        } else {
+            setWidth('w-0')
+        }
+    }, [router.asPath, href])
+
     return (
         <Link href={href} className={`${className} relative group`}>
             {title}
-            <span className={`h-[1px] inline-block  
-             bg-dark absolute left-0 -bottom-0.5 
-             group-hover:w-full transition-[width] ease duration-300 ${router.asPath === href ? 'w-full' : 'w-0'} dark:bg-light`} >&nbsp;</span>
+            <span className={`h-[1px] inline-block bg-dark absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 dark:bg-light ${width}`}>&nbsp;</span>
         </Link>
     )
 }
 
 const CustomMobileLink = ({ href, title, className = "", toggle }) => {
     const router = useRouter()
+    const [width, setWidth] = useState('w-0')
+
+    useEffect(() => {
+        if (router.asPath === href) {
+            setWidth('w-full')
+        } else {
+            setWidth('w-0')
+        }
+    }, [router.asPath, href])
+
     const handleClick = () => {
         toggle()
         router.push(href)
     }
+
     return (
         <button href={href} className={`${className} relative group text-light dark:text-dark my-2`} onClick={handleClick}>
             {title}
-            <span className={`h-[1px] inline-block  
-             bg-light absolute left-0 -bottom-0.5 
-             group-hover:w-full transition-[width] ease duration-300 ${router.asPath === href ? 'w-full' : 'w-0'} dark:bg-dark`} >&nbsp;</span>
+            <span className={`h-[1px] inline-block  bg-light absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 dark:bg-dark ${width}`} >&nbsp;</span>
         </button>
     )
 }
@@ -66,7 +83,6 @@ const NavBar = () => {
             <div className='w-full md:flex justify-between items-center hidden'>
                 <nav>
                     <CustomLink href="/" title="Home" className='mr-2' />
-                    <CustomLink href="/topRated" title="Top Rated" className='mx-2' />
                     <CustomLink href="/favorite" title="Favorite" className='mx-2' />
                     <CustomLink href="/history" title="History" className='ml-2' />
                 </nav>
@@ -109,7 +125,6 @@ const NavBar = () => {
                         bg-dark/90 dark:bg-light/75  rounded-lg backdrop-blur-md py-32'>
                         <nav className='flex items-center flex-col  justify-center'>
                             <CustomMobileLink href="/" title="Home" className='' toggle={handleClick} />
-                            <CustomMobileLink href="/topRated" title="Top Rated" className='' toggle={handleClick} />
                             <CustomMobileLink href="/favorite" title="Favorite" className='' toggle={handleClick} />
                             <CustomMobileLink href="/history" title="History" className='' toggle={handleClick} />
                         </nav>

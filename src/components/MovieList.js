@@ -20,6 +20,7 @@ const settings = {
 
 export default function MovieList({ data, name }) {
     let sortedData = data ? [...data.results] : [];
+
     const router = useRouter();
     const { query } = router.query
     const [favorites] = useState([]);

@@ -1,10 +1,10 @@
 // store.js
 import { configureStore } from '@reduxjs/toolkit';
-import apiReducer from './apiSlice';
+import contentReducer from './contentSlice';
 
 const store = configureStore({
   reducer: {
-    api: apiReducer,
+    content: contentReducer,
   },
 });
 
