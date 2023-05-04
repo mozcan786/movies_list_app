@@ -1,3 +1,4 @@
+
 // favori filmleri yerel depolama alanında saklamak için fonksiyon
 export function addToFavorites(movie) {
 

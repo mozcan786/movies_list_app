@@ -1,4 +1,5 @@
 import Head from "next/head";
+import React from 'react';
 export default function FilmDetay({ movie }) {
     return <div className="pt-[56px] min-h-screen w-full my-0 mx-auto">
         <Head>

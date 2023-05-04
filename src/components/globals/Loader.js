@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function Loader() {
     return <div className="flex justify-center min-h-screen pt-[100px]">
         <div className="flex flex-col">

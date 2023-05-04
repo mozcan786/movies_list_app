@@ -1,4 +1,5 @@
 import Head from "next/head";
+import React from 'react';
 import Link from "next/link";
 import { removeFromFavorites } from '@/utils/myfunc';
 import { useState, useEffect } from 'react';

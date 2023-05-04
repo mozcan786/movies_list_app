@@ -1,4 +1,5 @@
 import Link from "next/link"
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faClockRotateLeft } from '@fortawesome/free-solid-svg-icons'
